@@ -1,3 +1,4 @@
+import { AuthGuard } from './shared/auth.guard';
 import { AuthService } from './shared/auth.service';
 import { routing } from './app.routs';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,7 +28,7 @@ import { ProtectedComponent } from './protected/protected.component';
     HttpModule,
     routing
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
