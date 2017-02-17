@@ -50,19 +50,19 @@ export class SignupComponent implements OnInit {
         });
     }
 
-    isEmail(control: FormControl): {[s: string]: boolean} {
+    isEmail(control: FormControl): { [s: string]: boolean } {
         if (!control.value.match(/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/)) {
-            return {noEmail: true};
+            return { noEmail: true };
         }
     }
 
-    isEqualPassword(control: FormControl): {[s: string]: boolean} {
+    isEqualPassword(control: FormControl): { [s: string]: boolean } {
         if (!this.myForm) {
-            return {passwordsNotMatch: true};
+            return { passwordsNotMatch: true };
 
         }
         if (control.value !== this.myForm.controls['password'].value) {
-            return {passwordsNotMatch: true};
+            return { passwordsNotMatch: true };
         }
     }
 }
