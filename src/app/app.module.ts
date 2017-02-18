@@ -1,6 +1,6 @@
 import { AuthGuard } from './shared/auth.guard';
 import { AuthService } from './shared/auth.service';
-import { routing } from './app.routs';
+import { routing } from './app.routing';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';

@@ -1,5 +1,6 @@
 import { AuthService } from './auth.service';
-import { Component } from "@angular/core";
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs/Rx';
 
 @Component({
     selector: 'my-header',
@@ -28,15 +29,25 @@ import { Component } from "@angular/core";
     `
 })
 
-export class HeaderComponent {
+export class HeaderComponent implements OnDestroy {
+    isAuthenticated = false;
+    private subscription: Subscription;
 
-    constructor(private authService: AuthService) { }
+    constructor(private authService: AuthService) {
+        this.authService.isAuthenticated().subscribe(
+            authStatus => this.isAuthenticated = authStatus
+        );
+    }
 
     isAuth() {
-        return this.authService.isAuthenticated();
+        return this.isAuthenticated;
     }
 
     onLogout() {
         this.authService.logout();
+    }
+
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
     }
 }
